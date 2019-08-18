@@ -32,3 +32,7 @@ app.use(function (req, res, next) {
 app.use("/api", router);
 app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
 app.set('view engine', 'ejs');
+
+router.get("/", (req, res) => {
+    return res.json({ "success": true });
+})
