@@ -8,6 +8,8 @@ const API_PORT = 3001;
 const app = express();
 const router = express.Router();
 
+const recipeController = require("./controllers/recipeController");
+
 mongoose.connect(
     dbRoute,
     { useNewUrlParser: true }
@@ -19,9 +21,9 @@ db.once("open", () => console.log("connected to the database"));
 
 // checks if connection with the database is successful
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
 app.use(logger("dev"));
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -36,3 +38,7 @@ app.set('view engine', 'ejs');
 router.get("/", (req, res) => {
     return res.json({ "success": true });
 })
+
+router.get("/findrecipe", (req, res) => {
+
+});

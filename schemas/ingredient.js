@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 const IngredientSchema = new Schema(
     {
-        IngredientIndex: { type: Number, required: true },
-        MapIndices: { type: [Number], required: [] },
-        Count: { type: Number }
+        index: { type: Number, required: true },
+        mapList: { type: String, required: [] },
+        ingredient: { type: String, required: true }
     }
 )
 
-module.exports = mongoose.model("Ingredient")
+module.exports = mongoose.model("ingredients", IngredientSchema)

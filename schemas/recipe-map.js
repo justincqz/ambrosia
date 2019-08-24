@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 const RecipeMapSchema = new Schema(
     {
-        MapIndex: { type: Number, required: true },
-        RecipeIndex: { type: Number, required: true },
-        IngredientIndex: { type: [Number], default: [] }
+        index: { type: Number, required: true },
+        recipeIndex: { type: Number, required: true },
+        ingredientList: { type: String, default: "" }
     }
 )
 
-module.exports = mongoose.model("RecipeMap")
+module.exports = mongoose.model("maptable", RecipeMapSchema)
