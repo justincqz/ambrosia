@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const IngredientSchema = new Schema(
     {
         index: { type: Number, required: true },
-        mapList: { type: String, required: [] },
+        mapList: { type: String, required: true },
         ingredient: { type: String, required: true }
     }
 )

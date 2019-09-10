@@ -39,6 +39,4 @@ router.get("/", (req, res) => {
     return res.json({ "success": true });
 })
 
-router.get("/findrecipe", (req, res) => {
-
-});
+router.get("/findrecipe", recipeController.getRecipe);

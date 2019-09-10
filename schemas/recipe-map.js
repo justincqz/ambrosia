@@ -9,4 +9,4 @@ const RecipeMapSchema = new Schema(
     }
 )
 
-module.exports = mongoose.model("maptable", RecipeMapSchema)
+module.exports = mongoose.model("maprecipe", RecipeMapSchema)
