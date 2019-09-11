@@ -40,4 +40,5 @@ router.get("/", (req, res) => {
 })
 
 router.post("/findrecipe", recipeController.getRecipe);
+router.get("/randomrecipe", recipeController.getRandomRecipes);
 router.get("/recipe/:name", recipeController.getRecipeByName);

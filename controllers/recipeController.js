@@ -38,6 +38,36 @@ exports.getRecipeByName = function (req, res) {
     )
 }
 
+exports.getRandomRecipes = function (req, res) {
+    Recipe.count(
+        {},
+        (err, total) => {
+            if (err) {
+                return res.json({ success: false, err: err });
+            } else {
+                let randomIndices = [];
+                while (randomIndices.length != 5) {
+                    let randomNumber = Math.random(0, total);
+                    if (!randomIndices.includes(randomNumber)) {
+                        randomIndices.push(randomNumber);
+                    }
+                }
+
+                Recipe.find(
+                    { index: { $in: randomIndices } },
+                    (err, recipes) => {
+                        if (err) {
+                            return res.json({ success: false, err: err });
+                        } else {
+                            return res.json({ success: true, recipes: recipes });
+                        }
+                    }
+                )
+            }
+        }
+    )
+}
+
 function findRecipes(res, ingredients) {
     const recipeMap = {};
     ingredients.forEach(
