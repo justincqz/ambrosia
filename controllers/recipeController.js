@@ -47,7 +47,7 @@ exports.getRandomRecipes = function (req, res) {
             } else {
                 let randomIndices = [];
                 while (randomIndices.length != 5) {
-                    let randomNumber = Math.random(0, total);
+                    let randomNumber = Math.round(Math.random() * total);
                     if (!randomIndices.includes(randomNumber)) {
                         randomIndices.push(randomNumber);
                     }
