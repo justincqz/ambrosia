@@ -27,7 +27,7 @@ exports.getRecipeByName = function (req, res) {
     }
 
     Recipe.findOne(
-        { name: { $eq: req.body.name } },
+        { name: { $eq: req.params.name } },
         (err, recipe) => {
             if (err) {
                 return res.json({ success: false, err: err });
