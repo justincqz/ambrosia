@@ -40,3 +40,4 @@ router.get("/", (req, res) => {
 })
 
 router.post("/findrecipe", recipeController.getRecipe);
+router.get("/recipe", recipeController.getRecipeByName);

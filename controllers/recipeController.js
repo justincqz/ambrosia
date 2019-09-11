@@ -21,14 +21,31 @@ exports.getRecipe = function (req, res) {
     )
 }
 
+exports.getRecipeByName = function (req, res) {
+    if (req.params === null) {
+        return res.json({ success: false, err: "No recipe name was supplied!" });
+    }
+
+    Recipe.findOne(
+        { name: { $eq: req.body.name } },
+        (err, recipe) => {
+            if (err) {
+                return res.json({ success: false, err: err });
+            } else {
+                return res.json({ success: true, recipe: recipe });
+            }
+        }
+    )
+}
+
 function findRecipes(res, ingredients) {
     const recipeMap = {};
     ingredients.forEach(
         i => {
-            JSON.parse(i.mapList).forEach(index => 
+            JSON.parse(i.mapList).forEach(index =>
                 recipeMap[index]
-                ? recipeMap[index]++
-                : recipeMap[index] = 1);
+                    ? recipeMap[index]++
+                    : recipeMap[index] = 1);
         }
     )
 
@@ -36,10 +53,10 @@ function findRecipes(res, ingredients) {
         .map(index => {
             return { index: parseInt(index), count: recipeMap[index] }
         })
-        .sort((a, b) => 
-             a.count < b.count ? 1 : a.count === b.count ? 0 : -1
+        .sort((a, b) =>
+            a.count < b.count ? 1 : a.count === b.count ? 0 : -1
         );
-        console.log(recipesArray);
+    console.log(recipesArray);
 
 
     RecipeMap.find(
