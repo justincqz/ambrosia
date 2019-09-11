@@ -39,4 +39,4 @@ router.get("/", (req, res) => {
     return res.json({ "success": true });
 })
 
-router.get("/findrecipe", recipeController.getRecipe);
+router.post("/findrecipe", recipeController.getRecipe);
