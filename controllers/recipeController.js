@@ -22,7 +22,7 @@ exports.getRecipe = function (req, res) {
 }
 
 exports.getRecipeByName = function (req, res) {
-    if (req.params === null) {
+    if (req.params.name === null) {
         return res.json({ success: false, err: "No recipe name was supplied!" });
     }
 
